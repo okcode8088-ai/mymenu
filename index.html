@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rimberio Restaurant - เมนูอาหารไทยแนะนำ</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&family=Mali:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: 'Kanit', sans-serif;
+    background: #2a1810;
+    color: #fff;
+    line-height: 1.6;
+  }
+
+  /* ===== HERO SECTION ===== */
+  .hero {
+    background: linear-gradient(135deg, #3d2416 0%, #2a1810 100%);
+    padding: 60px 20px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: #f4c27a;
+    color: #3d2416;
+    padding: 15px 30px;
+    border-radius: 50px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(244, 194, 122, 0.3);
+  }
+
+  .logo-icon { font-size: 40px; }
+
+  .logo-text h1 {
+    font-family: 'Mali', cursive;
+    font-size: 24px;
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  .logo-text p { font-size: 12px; font-weight: 600; }
+
+  .hero h2 {
+    font-family: 'Mali', cursive;
+    font-size: clamp(42px, 8vw, 72px);
+    font-weight: 700;
+    color: #f4c27a;
+    text-shadow: 3px 3px 0 #8b4513;
+    margin-bottom: 10px;
+    transform: rotate(-2deg);
+  }
+
+  .hero h3 {
+    font-family: 'Mali', cursive;
+    font-size: clamp(32px, 6vw, 54px);
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 20px;
+    transform: rotate(1deg);
+  }
+
+  .hero-subtitle {
+    color: #d4a574;
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 300;
+  }
+
+  .decorative {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    font-size: 40px;
+  }
+
+  .decorative span { animation: float 3s ease-in-out infinite; }
+  .decorative span:nth-child(2) { animation-delay: 0.5s; }
+  .decorative span:nth-child(3) { animation-delay: 1s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+  }
+
+  /* ===== MENU SECTION ===== */
+  .menu-section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title { text-align: center; margin-bottom: 50px; }
+
+  .section-title h2 {
+    font-family: 'Mali', cursive;
+    font-size: 42px;
+    color: #f4c27a;
+    margin-bottom: 10px;
+  }
+
+  .section-title p {
+    color: #d4a574;
+    font-size: 16px;
+    font-family: 'Kanit', sans-serif;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+  }
+
+  .menu-card {
+    background: linear-gradient(145deg, #3d2416, #2a1810);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #5a3a24;
+    position: relative;
+  }
+
+  .menu-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(244, 194, 122, 0.2);
+    border-color: #f4c27a;
+  }
+
+  .menu-image {
+    height: 240px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .menu-image::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(to top, #3d2416, transparent);
+  }
+
+  .price-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #f4c27a;
+    color: #3d2416;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Mali', cursive;
+    font-size: 24px;
+    font-weight: 700;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 2;
+    border: 3px solid #fff;
+  }
+
+  .menu-content { padding: 25px; position: relative; }
+
+  .menu-thai {
+    font-family: 'Mali', cursive;
+    font-size: 28px;
+    color: #f4c27a;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  .menu-english {
+    font-family: 'Kanit', sans-serif;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .menu-desc {
+    color: #d4a574;
+    font-size: 14px;
+    line-height: 1.6;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #5a3a24;
+    margin-bottom: 15px;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 300;
+  }
+
+  .order-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #f4c27a;
+    color: #3d2416;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Mali', cursive;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .order-btn:hover {
+    background: #fff;
+    transform: scale(1.02);
+  }
+
+  .menu-card.featured { grid-column: span 2; }
+  .menu-card.featured .menu-image { height: 320px; }
+
+  /* ===== CTA SECTION ===== */
+  .cta-section {
+    background: linear-gradient(135deg, #f4c27a, #e8a85c);
+    color: #3d2416;
+    padding: 60px 20px;
+    text-align: center;
+    margin: 40px 0;
+  }
+
+  .cta-section h2 {
+    font-family: 'Mali', cursive;
+    font-size: 36px;
+    margin-bottom: 15px;
+  }
+
+  .cta-section p { font-size: 18px; margin-bottom: 25px; }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background: #3d2416;
+    color: #f4c27a;
+    text-decoration: none;
+    border-radius: 50px;
+    font-family: 'Mali', cursive;
+    font-weight: 700;
+    font-size: 20px;
+    transition: all 0.3s;
+  }
+
+  .cta-btn:hover {
+    background: #2a1810;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  }
+
+  /* ===== FOOTER ===== */
+  footer { background: #1a0f08; padding: 40px 20px; text-align: center; }
+
+  .footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    text-align: left;
+  }
+
+  .footer-col h4 {
+    font-family: 'Mali', cursive;
+    color: #f4c27a;
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+
+  .footer-col p, .footer-col a {
+    color: #d4a574;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-family: 'Kanit', sans-serif;
+  }
+
+  .footer-col a:hover { color: #f4c27a; }
+
+  .copyright {
+    border-top: 1px solid #3d2416;
+    margin-top: 30px;
+    padding-top: 20px;
+    color: #8b6f47;
+    font-size: 13px;
+    font-family: 'Kanit', sans-serif;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .menu-card.featured { grid-column: span 1; }
+    .menu-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===== ANIMATION ===== */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .menu-card { animation: fadeInUp 0.6s ease forwards; }
+  .menu-card:nth-child(1) { animation-delay: 0.1s; }
+  .menu-card:nth-child(2) { animation-delay: 0.2s; }
+  .menu-card:nth-child(3) { animation-delay: 0.3s; }
+  .menu-card:nth-child(4) { animation-delay: 0.4s; }
+  .menu-card:nth-child(5) { animation-delay: 0.5s; }
+</style>
+</head>
+<body>
+
+<style>
+  /* ===== HERO SECTION - IMPROVED ===== */
+  .hero {
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #2a1810;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/hero-thai-food.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(42, 24, 16, 0.85) 0%,
+      rgba(61, 36, 22, 0.75) 50%,
+      rgba(42, 24, 16, 0.85) 100%
+    );
+    z-index: 2;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 60px 20px;
+    max-width: 900px;
+    animation: fadeInUp 1s ease;
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(244, 194, 122, 0.95);
+    color: #3d2416;
+    padding: 15px 30px;
+    border-radius: 50px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 40px rgba(244, 194, 122, 0.4);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    animation: slideDown 0.8s ease;
+  }
+
+  .logo-icon {
+    font-size: 40px;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+  }
+
+  .logo-text h1 {
+    font-family: 'Mali', cursive;
+    font-size: 28px;
+    font-weight: 700;
+    font-style: italic;
+    margin: 0;
+    line-height: 1;
+  }
+
+  .logo-text p {
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .hero h2 {
+    font-family: 'Mali', cursive;
+    font-size: clamp(48px, 10vw, 80px);
+    font-weight: 700;
+    color: #f4c27a;
+    text-shadow: 4px 4px 0 rgba(139, 69, 19, 0.8), 
+                 8px 8px 20px rgba(0,0,0,0.5);
+    margin-bottom: 15px;
+    transform: rotate(-2deg);
+    animation: bounceIn 1s ease 0.3s both;
+    line-height: 1.2;
+  }
+
+  .hero h3 {
+    font-family: 'Mali', cursive;
+    font-size: clamp(36px, 7vw, 60px);
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 25px;
+    transform: rotate(1deg);
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.5),
+                 6px 6px 15px rgba(0,0,0,0.4);
+    animation: bounceIn 1s ease 0.5s both;
+  }
+
+  .hero-subtitle {
+    color: #f4e4d4;
+    font-size: 20px;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    animation: fadeIn 1s ease 0.7s both;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeIn 1s ease 0.9s both;
+  }
+
+  .hero-btn {
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-family: 'Mali', cursive;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .hero-btn-primary {
+    background: #f4c27a;
+    color: #3d2416;
+    box-shadow: 0 8px 25px rgba(244, 194, 122, 0.4);
+  }
+
+  .hero-btn-primary:hover {
+    background: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(244, 194, 122, 0.6);
+  }
+
+  .hero-btn-secondary {
+    background: transparent;
+    color: #f4c27a;
+    border: 2px solid #f4c27a;
+  }
+
+  .hero-btn-secondary:hover {
+    background: #f4c27a;
+    color: #3d2416;
+    transform: translateY(-3px);
+  }
+
+  .decorative {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    font-size: 40px;
+    animation: fadeIn 1s ease 1.1s both;
+  }
+
+  .decorative span {
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+  }
+
+  .decorative span:nth-child(2) { animation-delay: 0.5s; }
+  .decorative span:nth-child(3) { animation-delay: 1s; }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3) rotate(-2deg);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05) rotate(-2deg);
+    }
+    70% {
+      transform: scale(0.9) rotate(-2deg);
+    }
+    100% {
+      transform: scale(1) rotate(-2deg);
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 500px;
+    }
+
+    .hero-content {
+      padding: 40px 20px;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-btn {
+      width: 100%;
+      max-width: 280px;
+    }
+  }
+</style>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero">
+  <div class="hero-background"></div>
+  <div class="hero-overlay"></div>
+  
+  <div class="hero-content">
+    <div class="logo">
+      <span class="logo-icon">‍🍳</span>
+      <div class="logo-text">
+        <h1>Rimberio</h1>
+        <p>Restaurant</p>
+      </div>
+    </div>
+    
+    <h2>Menu อาหารไทย</h2>
+    <h3>เมนูแนะนำ</h3>
+    
+    <p class="hero-subtitle">
+      สัมผัสรสชาติอาหารไทยแท้ จากครัว Rimberio ที่คัดสรรวัตถุดิบคุณภาพ
+      <br>ปรุงสดใหม่ทุกจาน ด้วยสูตรต้นตำรับ
+    </p>
+    
+    <div class="hero-cta">
+      <a href="#menu" class="hero-btn hero-btn-primary">
+        🍜 ดูเมนูทั้งหมด
+      </a>
+      <a href="tel:+1234567890" class="hero-btn hero-btn-secondary">
+        📞 โทรสั่งเลย
+      </a>
+    </div>
+    
+    <div class="decorative">
+      <span></span>
+      <span>🌶️</span>
+      <span>🥢</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MENU ===== -->
+<section class="menu-section">
+  <div class="section-title">
+    <h2>🍜 เมนูแนะนำของเรา</h2>
+    <p>Recommended Dishes - คัดสรรเมนูเด็ดจากครัว</p>
+  </div>
+
+  <div class="menu-grid">
+
+    <!-- 1. กะเพราทะเล -->
+    <div class="menu-card featured">
+      <div class="menu-image" style="background-image: url('images/pad-krapao-talay.png');"></div>
+      <div class="price-badge">129.-</div>
+      <div class="menu-content">
+        <div class="menu-thai">กะเพราทะเล</div>
+        <div class="menu-english">Pad Krapao Talay</div>
+        <div class="menu-desc">
+          Spicy Seafood Holy Basil Stir-Fried<br>
+          กะเพราทะเลรสจัดจ้าน หอมใบกะเพรา พร้อมกุ้งและหมึกสดใหม่
+        </div>
+        <button class="order-btn" onclick="orderItem('Pad Krapao Talay')"> สั่งเลย</button>
+      </div>
+    </div>
+
+    <!-- 2. ส้มตำ -->
+    <div class="menu-card">
+      <div class="menu-image" style="background-image: url('images/somtum.png');"></div>
+      <div class="price-badge">79.-</div>
+      <div class="menu-content">
+        <div class="menu-thai">ส้มตำ</div>
+        <div class="menu-english">Somtum</div>
+        <div class="menu-desc">
+          A spicy salad made from shredded unripe papaya<br>
+          ส้มตำรสเด็ด เผ็ดจัดจ้าน ตามแบบฉบับไทยแท้
+        </div>
+        <button class="order-btn" onclick="orderItem('Somtum')"> สั่งเลย</button>
+      </div>
+    </div>
+
+    <!-- 3. ผัดไทยกุ้งสด -->
+    <div class="menu-card">
+      <div class="menu-image" style="background-image: url('images/pad-thai-kung.png');"></div>
+      <div class="price-badge">129.-</div>
+      <div class="menu-content">
+        <div class="menu-thai">ผัดไทยกุ้งสด</div>
+        <div class="menu-english">Pad Thai Kung</div>
+        <div class="menu-desc">
+          Pad Thai, Noodles with Fresh shrimp<br>
+          ผัดไทยเส้นนุ่ม กุ้งสดตัวโต รสชาติกลมกล่อม
+        </div>
+        <button class="order-btn" onclick="orderItem('Pad Thai Kung')">🛒 สั่งเลย</button>
+      </div>
+    </div>
+
+    <!-- 4. ผัดซีอิ๊ว -->
+    <div class="menu-card">
+      <div class="menu-image" style="background-image: url('images/pad-see-ew.png');"></div>
+      <div class="price-badge">89.-</div>
+      <div class="menu-content">
+        <div class="menu-thai">ผัดซีอิ๊ว</div>
+        <div class="menu-english">Pad See Ew</div>
+        <div class="menu-desc">
+          Pork, Egg with Rice noodles Stir-Fried<br>
+          ผัดซีอิ๊วเส้นใหญ่ หอมกลิ่นกระทะ หมูและไข่แน่นๆ
+        </div>
+        <button class="order-btn" onclick="orderItem('Pad See Ew')">🛒 สั่งเลย</button>
+      </div>
+    </div>
+
+    <!-- 5. ข้าวเหนียวมะม่วง -->
+    <div class="menu-card">
+      <div class="menu-image" style="background-image: url('images/khao-niew-ma-muang.png');"></div>
+      <div class="price-badge">59.-</div>
+      <div class="menu-content">
+        <div class="menu-thai">ข้าวเหนียวมะม่วง</div>
+        <div class="menu-english">Khao Niew Ma Muang</div>
+        <div class="menu-desc">
+          Sweet Sticky Rice with Mango<br>
+          ข้าวเหนียวมูนหอมมัน กับมะม่วงสุกหวานฉ่ำ
+        </div>
+        <button class="order-btn" onclick="orderItem('Khao Niew Ma Muang')">🛒 สั่งเลย</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section">
+  <h2>🌶️ พร้อมลิ้มรสอาหารไทยแท้หรือยัง?</h2>
+  <p>เปิดให้บริการทุกวัน | พร้อมรับออร์เดอร์เดลิเวอรี่</p>
+  <a href="tel:+1234567890" class="cta-btn">📞 โทรสั่งเลย +123-456-7890</a>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-col">
+      <h4>👨🍳 Rimberio Restaurant</h4>
+      <p>ร้านอาหาร Rimberio Restaurant</p>
+      <p>เมนูอาหารไทยแท้ รสชาติต้นตำรับ</p>
+    </div>
+    <div class="footer-col">
+      <h4>📞 ติดต่อเรา</h4>
+      <a href="tel:+1234567890">Tel. +123-456-7890</a>
+      <a href="#">@reallygreatsite</a>
+    </div>
+    <div class="footer-col">
+      <h4> เวลาทำการ</h4>
+      <p>เปิดทุกวัน 10:00 - 22:00 น.</p>
+      <p>รับออร์เดอร์เดลิเวอรี่</p>
+    </div>
+  </div>
+  <div class="copyright">
+    © 2025 Rimberio Restaurant. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  function orderItem(item) {
+    alert('🛒 คุณเลือก: ' + item + '\n\nกรุณาโทรสั่งที่ +123-456-7890');
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  });
+
+  document.querySelectorAll('.menu-card').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'all 0.6s ease';
+    observer.observe(card);
+  });
+</script>
+
+</body>
+</html>
